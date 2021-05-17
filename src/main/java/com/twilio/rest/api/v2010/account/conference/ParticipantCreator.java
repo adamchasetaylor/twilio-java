@@ -17,6 +17,7 @@ import com.twilio.http.Request;
 import com.twilio.http.Response;
 import com.twilio.http.TwilioRestClient;
 import com.twilio.rest.Domains;
+import com.twilio.type.Endpoint;
 
 import java.net.URI;
 import java.util.List;
@@ -24,8 +25,8 @@ import java.util.List;
 public class ParticipantCreator extends Creator<Participant> {
     private String pathAccountSid;
     private final String pathConferenceSid;
-    private final com.twilio.type.PhoneNumber from;
-    private final com.twilio.type.PhoneNumber to;
+    private final com.twilio.type.Endpoint from;
+    private final com.twilio.type.Endpoint to;
     private URI statusCallback;
     private HttpMethod statusCallbackMethod;
     private List<String> statusCallbackEvent;
@@ -73,8 +74,8 @@ public class ParticipantCreator extends Creator<Participant> {
      *           this call.
      */
     public ParticipantCreator(final String pathConferenceSid,
-                              final com.twilio.type.PhoneNumber from,
-                              final com.twilio.type.PhoneNumber to) {
+                              final com.twilio.type.Endpoint from,
+                              final com.twilio.type.Endpoint to) {
         this.pathConferenceSid = pathConferenceSid;
         this.from = from;
         this.to = to;
@@ -92,8 +93,8 @@ public class ParticipantCreator extends Creator<Participant> {
      */
     public ParticipantCreator(final String pathAccountSid,
                               final String pathConferenceSid,
-                              final com.twilio.type.PhoneNumber from,
-                              final com.twilio.type.PhoneNumber to) {
+                              final com.twilio.type.Endpoint from,
+                              final com.twilio.type.Endpoint to) {
         this.pathAccountSid = pathAccountSid;
         this.pathConferenceSid = pathConferenceSid;
         this.from = from;
@@ -398,8 +399,8 @@ public class ParticipantCreator extends Creator<Participant> {
     /**
      * The conference state changes that should generate a call to
      * `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`,
-     * `mute`, `hold`, and `speaker`. Separate multiple values with a space.
-     * Defaults to `start end`..
+     * `mute`, `hold`, `speaker`, and `announcement`. Separate multiple values with
+     * a space. Defaults to `start end`..
      *
      * @param conferenceStatusCallbackEvent The conference state changes that
      *                                      should generate a call to
@@ -414,8 +415,8 @@ public class ParticipantCreator extends Creator<Participant> {
     /**
      * The conference state changes that should generate a call to
      * `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`,
-     * `mute`, `hold`, and `speaker`. Separate multiple values with a space.
-     * Defaults to `start end`..
+     * `mute`, `hold`, `speaker`, and `announcement`. Separate multiple values with
+     * a space. Defaults to `start end`..
      *
      * @param conferenceStatusCallbackEvent The conference state changes that
      *                                      should generate a call to
@@ -762,11 +763,11 @@ public class ParticipantCreator extends Creator<Participant> {
      */
     private void addPostParams(final Request request) {
         if (from != null) {
-            request.addPostParam("From", from.toString());
+            request.addPostParam("From", from.getEndpoint());
         }
 
         if (to != null) {
-            request.addPostParam("To", to.toString());
+            request.addPostParam("To", to.getEndpoint());
         }
 
         if (statusCallback != null) {

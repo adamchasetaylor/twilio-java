@@ -1,6 +1,113 @@
 twilio-java changelog
 =====================
 
+[2021-05-05] Version 8.12.0
+---------------------------
+**Library - Feature**
+- [PR #559](https://github.com/twilio/twilio-java/pull/559): allow conference participant to be any endpoint. Thanks to [@JaymoKang](https://github.com/JaymoKang)!
+
+**Library - Fix**
+- [PR #632](https://github.com/twilio/twilio-java/pull/632): log correct URL in TwilioRestClient. Thanks to [@sullis](https://github.com/sullis)!
+
+**Api**
+- Corrected the data types for feedback summary fields **(breaking change)**
+- Update the conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+
+**Bulkexports**
+- promoting API maturity to GA
+
+**Events**
+- Add endpoint to update description in sink
+- Remove beta-feature account flag
+
+**Messaging**
+- Update `status` field in us_app_to_person api to `campaign_status` **(breaking change)**
+
+**Verify**
+- Improve documentation regarding `push` factor and include extra information about `totp` factor.
+
+
+[2021-04-21] Version 8.11.0
+---------------------------
+**Library - Chore**
+- [PR #631](https://github.com/twilio/twilio-java/pull/631): protected TwilioRestClient constructor. Thanks to [@bcanseco](https://github.com/bcanseco)!
+
+**Api**
+- Revert Update the conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+- Update the conference participant create `from` and `to` param to be endpoint type for supporting client identifier and sip address
+
+**Bulkexports**
+- moving enum to doc root for auto generating documentation
+- adding status enum and default output properties
+
+**Events**
+- Change schema_versions prop and key to versions **(breaking change)**
+
+**Messaging**
+- Add `use_inbound_webhook_on_number` field in Service API for fetch, create, update, read
+
+**Taskrouter**
+- Add `If-Match` Header based on ETag for Task Delete
+
+**Verify**
+- Add `AuthPayload` parameter to support verifying a `Challenge` upon creation. This is only supported for `totp` factors.
+- Add support to resend the notifications of a `Challenge`. This is only supported for `push` factors.
+
+**Twiml**
+- Add Polly Neural voices.
+
+
+[2021-04-07] Version 8.10.0
+---------------------------
+**Library - Fix**
+- [PR #629](https://github.com/twilio/twilio-java/pull/629): handle case where XML transformer attributes are not supported. Thanks to [@codylerum](https://github.com/codylerum)!
+
+**Api**
+- Added `announcement` event to conference status callback events
+- Removed optional property `time_limit` in the call create request. **(breaking change)**
+- Added optional parameter `CallToken` for create calls api
+- Add optional property `time_limit` in the call create request.
+
+**Bulkexports**
+- adding two new fields with job api queue_position and estimated_completion_time
+
+**Events**
+- Add new endpoints to manage subscribed_events in subscriptions
+
+**Messaging**
+- Add rate_limits field to Messaging Services US App To Person API
+- Add usecase field in Service API for fetch, create, update, read
+- Add us app to person api and us app to person usecase api as dependents in service
+- Add us_app_to_person_registered field in service api for fetch, read, create, update
+- Add us app to person api
+- Add us app to person usecase api
+- Add A2P external campaign api
+- Add Usecases API
+
+**Numbers**
+- Remove feature flags for RegulatoryCompliance endpoints
+
+**Supersim**
+- Add Create endpoint to Sims resource
+- Add SmsCommands resource
+- Add fields `SmsCommandsUrl`, `SmsCommandsMethod` and `SmsCommandsEnabled` to a Fleet resource
+
+**Taskrouter**
+- Add `If-Match` Header based on ETag for Task Update
+- Add `ETag` as Response Headers to Tasks and Reservations
+
+**Verify**
+- The `Binding` field is now returned when creating a `Factor`. This value won't be returned for other endpoints.
+
+**Video**
+- [Rooms] max_concurrent_published_tracks has got GA maturity
+- Recording rule beta flag **(breaking change)**
+- [Rooms] Add RecordingRules param to Rooms
+
+**Twiml**
+- Add `announcement` event to `statusCallbackEvent` for `<Conference>`.
+
+
 [2021-03-15] Version 8.9.0
 --------------------------
 **Library - Fix**

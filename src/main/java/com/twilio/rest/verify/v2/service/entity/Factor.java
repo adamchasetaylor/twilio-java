@@ -145,22 +145,6 @@ public class Factor extends Resource {
     }
 
     /**
-     * Create a FactorCreator to execute create.
-     *
-     * @param pathServiceSid Service Sid.
-     * @param pathIdentity Unique external identifier of the Entity
-     * @param friendlyName The friendly name of this Factor
-     * @param factorType The Type of this Factor
-     * @return FactorCreator capable of executing the create
-     */
-    public static FactorCreator creator(final String pathServiceSid,
-                                        final String pathIdentity,
-                                        final String friendlyName,
-                                        final Factor.FactorTypes factorType) {
-        return new FactorCreator(pathServiceSid, pathIdentity, friendlyName, factorType);
-    }
-
-    /**
      * Create a FactorDeleter to execute delete.
      *
      * @param pathServiceSid Service Sid.
