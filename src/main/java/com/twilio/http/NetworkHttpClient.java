@@ -12,7 +12,6 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.impl.client.AIMDBackoffManager;
 import org.apache.http.message.BasicHeader;
 
 import java.io.IOException;
@@ -70,8 +69,6 @@ public class NetworkHttpClient extends HttpClient {
             .setDefaultRequestConfig(config)
             .setDefaultHeaders(headers)
             .setRedirectStrategy(this.getRedirectStrategy())
-            .setBackoffManager(new AIMDBackoffManager(connectionManager))
-            .setConnectionBackoffStrategy(new TwilioBackoffStrategy())
             .build();
     }
 
